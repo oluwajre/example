@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('job_listings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->string('title');
+            $table->foreignIdFor(\App\Models\Employer::class, 'employer_id')->constrained()->cascadeOnDelete();
+            $table->string('title')->nullable(false);
             $table->string('company');
             $table->string('location');
             $table->string('salary');

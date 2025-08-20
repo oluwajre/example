@@ -10,4 +10,8 @@
     <p>The Location is at: <strong>{{ $job['location'] }}</strong></p>
     <p>The Salary is <strong>{{ $job['salary'] }}/yr</strong></p>
     <a href="/contact" class="mt-4 inline-block text-blue-500 hover:underline hover:text-blue-700">For more information, please contact us directly.</a>
+
+    <div class="mt-5">
+        <x-button href="/jobs/{{ $job->id}}/edit">Edit Job</x-button>
+    </div> 
 </x-layout>

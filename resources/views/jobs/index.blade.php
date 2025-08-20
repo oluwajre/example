@@ -13,4 +13,8 @@
         
     @endforeach
     <p class="text-gray-500">Total jobs: {{ count($jobs) }}</p>
+
+    <div>
+        {{ $jobs->links() }}
+    </div>
 </x-layout>
