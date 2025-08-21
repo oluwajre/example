@@ -3,8 +3,6 @@
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
-use App\Models\Job;
-
 //Home 
 Route::get('/', function () {
     return view('home');
@@ -14,55 +12,23 @@ Route::get('/', function () {
 Route::get('/jobs', [JobController::class, 'index']);
 
 // Create a Job
-Route::get('/jobs/create', function () {
-
-});
+Route::get('/jobs/create', [JobController::class,'create']);
 
 // Store Job in Database using Post
-Route::post('/jobs', function () {
-
-});
+Route::post('/jobs', [JobController::class,'store']);
 
 // Show a Particular Job
-Route::get('/jobs/{job}', function (Job $job) {
-
-});
+Route::get('/jobs/{job}', [JobController::class,'show']);
 
 // Edit a Particular Job
-Route::get('/jobs/{job}/edit', function ($job) {
-
-    return view('jobs.edit', ['job' => $job]);
-});
+Route::get('/jobs/{job}/edit', [JobController::class,'edit']);
 
 //Save Update to a Job in the Database
-Route::patch('/jobs/{job}', function (Job $job) {
-    request()->validate([
-        'title' => ['required','min:3'],
-        'company' => ['required','min:3'],
-        'location' => ['required','min:3'],
-        'salary' => ['required','min:3',],
-    ]);
-
-
-    $job->update([
-        'title'=> request('title'),
-        'company' => request('company'),
-        'location' => request('location'),
-        'salary' => request('salary'),
-    ]);
-
-    return redirect("/jobs/{$job->id}");
-});
+Route::patch('/jobs/{job}', [JobController::class,'update']);
 
 
 //Delete a Job in the Database
-Route::delete('/jobs/{job}', function (Job $job) {
-    
-    $job->delete();
-
-    return redirect('/jobs');
-});
-
+Route::delete('/jobs/{job}', [JobController::class,'delete']);
 
 
 //Contact Page
