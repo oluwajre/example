@@ -11,7 +11,9 @@
     <p>The Salary is <strong>{{ $job['salary'] }}/yr</strong></p>
     <a href="/contact" class="mt-4 inline-block text-blue-500 hover:underline hover:text-blue-700">For more information, please contact us directly.</a>
 
-    <div class="mt-5">
-        <x-button href="/jobs/{{ $job->id}}/edit">Edit Job</x-button>
-    </div> 
+    @can('edit-job', $job)
+        <div class="mt-5">
+            <x-button href="/jobs/{{ $job->id}}/edit">Edit Job</x-button>
+        </div> 
+    @endcan
 </x-layout>

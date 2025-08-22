@@ -11,83 +11,42 @@
 
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-4">
-                    <label for="title" class="block text-sm/6 font-medium text-gray-900">Title</label>
-                    <div class="mt-2 flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                        <input 
-                            id="title" 
-                            type="text" 
-                            name="title" 
-                            placeholder="Software Engineer" 
-                            class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                            value="{{ old('title') }}"
-                        />
-                    </div>
+                    <x-form-label for="title">Title</x-form-label>
 
-                    @error('title')
-                        <p class="mt-2 text-xs font-bold text-red-500">{{ $message }}</p>
-                    @enderror
+                    <x-form-input id="title" name="title" placeholder="Software Engineer" required />
+
+                    <x-form-error name="title" />
                 </div>
 
                 <div class="sm:col-span-4">
-                    <label for="company" class="block text-sm/6 font-medium text-gray-900">Company</label>
-                    <div class="mt-2 flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                        <input 
-                            id="company" 
-                            type="text" 
-                            name="company" 
-                            placeholder="Creditswitch Ltd" 
-                            class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                            value="{{ old('company') }}"
-                         />
-                    </div>
+                    <x-form-label for="company">Company</x-form-label>
 
-                    @error('company')
-                        <p class="mt-2 text-xs font-bold text-red-500">{{ $message }}</p>
-                    @enderror
+                    <x-form-input id="company" name="company" placeholder="Creditswitch Ltd" required />
+
+                    <x-form-error name="company" />
                 </div>
 
                 <div class="sm:col-span-4">
-                    <label for="salary" class="block text-sm/6 font-medium text-gray-900">Salary</label>
-                    <div class="mt-2 flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                        <input 
-                            id="salary" 
-                            type="text" 
-                            name="salary" 
-                            placeholder="$50,000"
-                            class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                            value="{{ old('salary') }}"
-                         />
-                    </div>
+                    <x-form-label for="salary">Salary</x-form-label>
 
-                    @error('salary')
-                        <p class="mt-2 text-xs font-bold text-red-500">{{ $message }}</p>
-                    @enderror
+                    <x-form-input id="salary" name="salary" placeholder="$50,000" required />
+
+                    <x-form-error name="salary" />
                 </div>
 
-                <div class="col-span-full">
-                    <label for="location" class="block text-sm/6 font-medium text-gray-900">Location</label>
-                    <div class="mt-2">
-                        <textarea 
-                            id="location" 
-                            name="location" 
-                            rows="3" 
-                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                            value="{{ old('location') }}"
-                        ></textarea>
-                    </div>
+                <div class="sm:col-span-4">
+                    <x-form-label for="location">Location</x-form-label>
 
-                    @error('location')
-                        <p class="mt-2 text-xs font-bold text-red-500">{{ $message }}</p>
-                    @else
-                        <p class="mt-2 text-sm/6 text-gray-600">Write the location of the Company.</p>
-                    @enderror
+                    <x-form-input id="location" name="location" placeholder="" required />
+
+                    <x-form-error name="location" />
                 </div>
             </div>
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <button type="button" class="text-sm font-semibold rounded-md px-3 py-2 text-gray-900 border border-gray-900 hover:bg-gray-900 hover:text-white cursor-pointer">Cancel</button>
-            <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer">Save</button>
+            <x-form-button>Save</x-form-button>
         </div>
     </form>
 

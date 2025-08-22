@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {   
@@ -20,6 +22,7 @@ class JobController extends Controller
 
     // Create a Job
     public function create() {
+
         return view('jobs.create');
     }
 
@@ -51,6 +54,9 @@ class JobController extends Controller
 
     // Edit a Particular Job
     public function edit(Job $job) {
+
+        // Gate::authorize('edit-job', $job);
+
         return view('jobs.edit', ['job' => $job]);
     }
 
@@ -76,6 +82,9 @@ class JobController extends Controller
 
     //Delete a Job in the Database
     public function destroy(Job $job) {
+
+        Gate::authorize('edit-job', $job);
+
         $job->delete();
 
         return redirect('/jobs');
